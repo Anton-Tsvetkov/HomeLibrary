@@ -1,0 +1,71 @@
+{
+  "bookList": [
+    {
+      "title": "title1",
+      "authorList": [
+        {
+          "name": "author1"
+        }
+      ],
+      "pagesAmount": 111,
+      "ISBN": "2-266-11156-6",
+      "issueYear": 1985
+    },
+    {
+      "title": "title2",
+      "authorList": [
+        {
+          "name": "author2"
+        },
+        {
+          "name": "author3"
+        }
+      ],
+      "pagesAmount": 222,
+      "ISBN": "1-426-32850-7",
+      "issueYear": 2003
+    },
+    {
+      "title": "title3",
+      "authorList": [
+        {
+          "name": "author1"
+        },
+        {
+          "name": "author3"
+        }
+      ],
+      "pagesAmount": 333,
+      "ISBN": "5-913-65257-3",
+      "issueYear": 2010
+    },
+    {
+      "title": "title4",
+      "authorList": [
+        {
+          "name": "author5"
+        },
+        {
+          "name": "author2"
+        }
+      ],
+      "pagesAmount": 214,
+      "ISBN": "812-882-12-353",
+      "issueYear": 2014
+    },
+    {
+      "title": "title5",
+      "authorList": [
+        {
+          "name": "author3"
+        },
+        {
+          "name": "author1"
+        }
+      ],
+      "pagesAmount": 397,
+      "ISBN": "129-SAJ5-88-E3",
+      "issueYear": 2017
+    }
+  ]
+}

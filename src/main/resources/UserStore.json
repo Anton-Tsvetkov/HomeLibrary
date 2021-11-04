@@ -1,0 +1,180 @@
+{
+  "userList": [
+    {
+      "bookmarkList": [
+        {
+          "pageNumber": 105,
+          "name": "bookmark1",
+          "bookTitle": "title3"
+        }
+      ],
+      "password": "password1",
+      "userRights": "USER",
+      "userStatus": "UNLOCKED",
+      "bookList": [
+        {
+          "pagesAmount": 111,
+          "issueYear": 1985,
+          "ISBN": "2-266-11156-6",
+          "authorList": [
+            {
+              "name": "author1"
+            }
+          ],
+          "title": "title1"
+        },
+        {
+          "pagesAmount": 222,
+          "issueYear": 2003,
+          "ISBN": "1-426-32850-7",
+          "authorList": [
+            {
+              "name": "author2"
+            },
+            {
+              "name": "author3"
+            }
+          ],
+          "title": "title2"
+        }
+      ],
+      "username": "username1"
+    },
+    {
+      "bookmarkList": [
+        {
+          "pageNumber": 105,
+          "name": "bookmark1",
+          "bookTitle": "title3"
+        }
+      ],
+      "password": "password2",
+      "userRights": "USER",
+      "userStatus": "BLOCKED",
+      "bookList": [
+        {
+          "pagesAmount": 111,
+          "issueYear": 1985,
+          "ISBN": "2-266-11156-6",
+          "authorList": [
+            {
+              "name": "author1"
+            }
+          ],
+          "title": "title1"
+        },
+        {
+          "pagesAmount": 222,
+          "issueYear": 2003,
+          "ISBN": "1-426-32850-7",
+          "authorList": [
+            {
+              "name": "author2"
+            },
+            {
+              "name": "author3"
+            }
+          ],
+          "title": "title2"
+        },
+        {
+          "pagesAmount": 333,
+          "issueYear": 2010,
+          "ISBN": "5-913-65257-3",
+          "authorList": [
+            {
+              "name": "author1"
+            },
+            {
+              "name": "author3"
+            }
+          ],
+          "title": "title3"
+        }
+      ],
+      "username": "username2"
+    },
+    {
+      "bookmarkList": [
+        {
+          "pageNumber": 32,
+          "name": "bookmark1",
+          "bookTitle": "title2"
+        },
+        {
+          "pageNumber": 43,
+          "name": "bookmark2",
+          "bookTitle": "title2"
+        }
+      ],
+      "password": "password3",
+      "userRights": "ADMIN",
+      "userStatus": "UNLOCKED",
+      "bookList": [
+        {
+          "pagesAmount": 222,
+          "issueYear": 2003,
+          "ISBN": "1-426-32850-7",
+          "authorList": [
+            {
+              "name": "author2"
+            },
+            {
+              "name": "author3"
+            }
+          ],
+          "title": "title2"
+        }
+      ],
+      "username": "username3"
+    },
+    {
+      "bookmarkList": [
+        {
+          "pageNumber": 5,
+          "name": "bookmark1",
+          "bookTitle": "title3"
+        },
+        {
+          "pageNumber": 92,
+          "name": "bookmark2",
+          "bookTitle": "title3"
+        }
+      ],
+      "password": "password4",
+      "userRights": "USER",
+      "userStatus": "UNLOCKED",
+      "bookList": [
+        {
+          "pagesAmount": 222,
+          "issueYear": 2003,
+          "ISBN": "1-426-32850-7",
+          "authorList": [
+            {
+              "name": "author2"
+            },
+            {
+              "name": "author3"
+            }
+          ],
+          "title": "title2"
+        },
+        {
+          "pagesAmount": 333,
+          "issueYear": 2010,
+          "ISBN": "5-913-65257-3",
+          "authorList": [
+            {
+              "name": "author1"
+            },
+            {
+              "name": "author3"
+            }
+          ],
+          "title": "title3"
+        }
+      ],
+      "username": "username4"
+    }
+  ]
+}
