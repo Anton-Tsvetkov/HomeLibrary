@@ -117,16 +117,7 @@ public class Questioner {
                 FACADE.addNewBooksInLibraryFromFile(SCANNER.nextLine());
                 break;
             case "4":
-                System.out.println("Enter book title:");
-                String bookTitle = SCANNER.nextLine();
-
-                System.out.println("Enter book's page number for bookmark:");
-                String bookPageNumberString = SCANNER.nextLine();
-
-                System.out.println("Enter bookmark name:");
-                String bookmarkName = SCANNER.nextLine();
-
-                FACADE.addNewBookmarks(activeUser, bookmarkName, bookTitle, Integer.parseInt(bookPageNumberString));
+                FACADE.addNewBookmarks(activeUser, RECOGNIZER.recognizeNewBookmark());
                 break;
             default:
                 System.out.println("Not found " + answer + " functionality");
@@ -149,10 +140,10 @@ public class Questioner {
                 FACADE.removeAuthorsFromLibrary(authors);
                 break;
             case "3":
-                FACADE.removeBookmark(activeUser, RECOGNIZER.recognizeBookmark(activeUser));
+                FACADE.removeBookmark(activeUser, RECOGNIZER.recognizeExistBookmark(activeUser));
                 break;
             default:
-                System.out.println("Not found " + answer + " functionality");
+                System.out.println("Not found \"" + answer + "\" functionality");
         }
     }
 

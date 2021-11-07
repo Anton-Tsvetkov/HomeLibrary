@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class JSONParser {
 
@@ -41,25 +40,10 @@ public class JSONParser {
 
     public void parseObjectsToJson(String pathToJSONFile, GlobalObject object) {
         try {
-//            if (pathToJSONFile.toLowerCase().contains("library")) {
-//                object = new Library();
-//            } else if (pathToJSONFile.toLowerCase().contains("user")) {
-//                object = new UserStore();
-//            } else {
-//                throw new UserDataException();
-//            }
-
-//            object.addObjectsToList(parseObjectsFromJson(pathToJSONFile));
-//            object.addObjectsToList(objects);
-
             Writer fileWriter = Files.newBufferedWriter(Paths.get(pathToJSONFile));
-            //Writer fileWriter = new BufferedWriter(new FileWriter(pathToJSONFile, true));
-
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(object, fileWriter);
-
             fileWriter.close();
-
         } catch (IOException ex) {
             LOGGER.error("Error writing to file '" + pathToJSONFile + "'");
             LOGGER.error(ex.getMessage());

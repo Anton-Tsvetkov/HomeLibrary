@@ -1,12 +1,12 @@
 package com.epam.laboratory.systemObjects.workWithData.parsers;
 
-import com.epam.laboratory.exceptions.UserDataException;
 import com.epam.laboratory.systemObjects.workWithData.ConfigurationDataUsage;
 import com.epam.laboratory.workObjects.globalObjects.GlobalObject;
 import com.epam.laboratory.workObjects.globalObjects.Library;
+import com.epam.laboratory.workObjects.globalObjects.UserStore;
+import com.epam.laboratory.workObjects.library.Bookmark;
 import com.epam.laboratory.workObjects.user.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataLoader {
@@ -26,15 +26,42 @@ public class DataLoader {
         }
     }
 
-
-    public void updateFile(String pathToFile, GlobalObject actualGlobalObject){
-        GlobalObject oldGlobalObject = new DataLoader().getDataFromFile(pathToFile);
-        if(oldGlobalObject.getList().size() != actualGlobalObject.getList().size()){
-
+    public void addNewBookmarks(User user, Bookmark bookmark) {
+        UserStore userStore = (UserStore) getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        for (User user1 : userStore.getList()) {
+            if (user.getUsername().equals(user1.getUsername())) {
+                List<Bookmark> bookmarkList = user1.getBookmarkList();
+                bookmarkList.add(bookmark);
+                user1.setBookmarkList(bookmarkList);
+                break;
+            }
         }
+        updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
     }
 
-    public void addNewObjectsInFile(String pathToFile, GlobalObject object) {
+    public void removeBookmark(User user, Bookmark bookmarkForRemove) {
+        UserStore userStore = (UserStore) getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+
+        for (User user1 : userStore.getList()) {
+            if (user.getUsername().equals(user1.getUsername())) {
+                user = user1;
+                break;
+            }
+        }
+
+        List<Bookmark> bookmarkList = user.getBookmarkList();
+        Bookmark removingBookmark = new Bookmark();
+        for (Bookmark bookmark : bookmarkList) {
+            if (bookmark.getName().equals(bookmarkForRemove.getName())) {
+                removingBookmark = bookmark;
+            }
+        }
+        bookmarkList.remove(removingBookmark);
+        user.setBookmarkList(bookmarkList);
+        updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
+    }
+
+    public void updateFile(String pathToFile, GlobalObject object) {
         if (pathToFile.toLowerCase().contains("json")) {
             JSON_PARSER.parseObjectsToJson(pathToFile, object);
         } else if (pathToFile.toLowerCase().contains("csv")) {

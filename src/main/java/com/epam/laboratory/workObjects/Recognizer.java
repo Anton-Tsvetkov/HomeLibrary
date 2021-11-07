@@ -75,7 +75,6 @@ public class Recognizer {
             }
         }
         for (int i = 0; i < commaCount; i++) {
-            System.out.println(authorsString);
             String authorSubstring = authorsString.substring(0, authorsString.indexOf(','));
             authorList.add(new Author(authorSubstring));
             authorsString = authorsString.replace(authorSubstring, "").replaceFirst(",", "");
@@ -83,7 +82,7 @@ public class Recognizer {
         return authorList;
     }
 
-    public Bookmark recognizeBookmark(User user){
+    public Bookmark recognizeExistBookmark(User user){
         System.out.println("Enter book title:");
         String bookTitle = SCANNER.nextLine();
 
@@ -92,4 +91,18 @@ public class Recognizer {
 
         return new UserManager().getBookmarkByName(user, bookTitle, bookmarksNames);
     }
+
+    public Bookmark recognizeNewBookmark(){
+        System.out.println("Enter book title:");
+        String bookTitle = SCANNER.nextLine();
+
+        System.out.println("Enter page number:");
+        String pageNumber = SCANNER.nextLine();
+
+        System.out.println("Enter bookmarks name:");
+        String bookmarksName = SCANNER.nextLine();
+
+        return new Bookmark(bookmarksName, bookTitle, Integer.parseInt(pageNumber));
+    }
+
 }

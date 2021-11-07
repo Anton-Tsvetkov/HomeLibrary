@@ -91,8 +91,8 @@ public class Facade {
         LIBRARIAN.addNewAuthors(authorsList);
     }
 
-    public void addNewBookmarks(User user, String bookmarkName, String bookTitle, int pageNumber) {
-        LIBRARIAN.addNewBookmarks(user, bookmarkName, bookTitle, pageNumber);
+    public void addNewBookmarks(User user, Bookmark bookmark) {
+        DATA_LOADER.addNewBookmarks(user, bookmark);
     }
 
 
@@ -111,7 +111,7 @@ public class Facade {
     }
 
     public void removeBookmark(User user, Bookmark bookmark) {
-        LIBRARIAN.removeBookmark(user, bookmark);
+        DATA_LOADER.removeBookmark(user, bookmark);
     }
 
 

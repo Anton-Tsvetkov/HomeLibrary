@@ -21,7 +21,7 @@ public class UserManager {
         try {
             List<User> userList = new ArrayList<>();
             userList.add(new User(username, password));
-            DATA_LOADER.addNewObjectsInFile(ConfigurationDataUsage.pathToUserStoreJsonFile,
+            DATA_LOADER.updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile,
                     GLOBAL_OBJECT_PARSER.parseListAsGlobalObject(userList));
         } catch (DataException e){
             e.printStackTrace();

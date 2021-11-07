@@ -66,6 +66,23 @@
       "pagesAmount": 397,
       "ISBN": "129-SAJ5-88-E3",
       "issueYear": 2017
+    },
+    {
+      "title": "title6",
+      "authorList": [
+        {
+          "name": "author3"
+        },
+        {
+          "name": "author8"
+        },
+        {
+          "name": "author9"
+        }
+      ],
+      "pagesAmount": 417,
+      "ISBN": "942-12-J7-4",
+      "issueYear": 1903
     }
   ],
   "authorList": [
@@ -77,6 +94,12 @@
     },
     {
       "name": "author86"
+    },
+    {
+      "name": "author105"
+    },
+    {
+      "name": "author2"
     }
   ]
 }
