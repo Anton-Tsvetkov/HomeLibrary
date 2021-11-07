@@ -50,7 +50,7 @@
       ],
       "password": "password2",
       "userRights": "USER",
-      "userStatus": "BLOCKED",
+      "userStatus": "LOCKED",
       "bookList": [
         {
           "pagesAmount": 111,

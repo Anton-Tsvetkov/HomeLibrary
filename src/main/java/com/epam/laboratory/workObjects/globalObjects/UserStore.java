@@ -27,6 +27,11 @@ public class UserStore extends GlobalObject {
     }
 
     @Override
+    public void setList(List<?> objects) {
+        userList = (List<User>) objects;
+    }
+
+    @Override
     public String toString() {
         return "UserStore{" +
                 "userList=" + userList +

@@ -14,7 +14,6 @@ public class User {
     @JsonProperty("username")
     protected String username;
 
-
     @JsonProperty("password")
     protected String password;
 

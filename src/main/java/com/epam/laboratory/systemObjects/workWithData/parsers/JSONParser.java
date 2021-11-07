@@ -1,6 +1,5 @@
-package com.epam.laboratory.systemObjects.workWithData.loadData;
+package com.epam.laboratory.systemObjects.workWithData.parsers;
 
-import com.epam.laboratory.exceptions.UserDataException;
 import com.epam.laboratory.workObjects.globalObjects.GlobalObject;
 import com.epam.laboratory.workObjects.globalObjects.Library;
 import com.epam.laboratory.workObjects.globalObjects.UserStore;
@@ -18,7 +17,7 @@ public class JSONParser {
     private static final Logger LOGGER = Logger.getLogger(JSONParser.class);
 
 
-    public List<?> parseObjectsFromJson(String pathToJSONFile) {
+    public GlobalObject parseObjectsFromJson(String pathToJSONFile) {
         GlobalObject object;
         if (pathToJSONFile.toLowerCase().contains("library")) {
             object = new Library();
@@ -36,23 +35,22 @@ public class JSONParser {
             LOGGER.error(ex.getMessage());
         }
 
-        return object.getList();
+        return object;
 
     }
 
-    public void parseObjectsToJson(String pathToJSONFile, List<?> objects) {
+    public void parseObjectsToJson(String pathToJSONFile, GlobalObject object) {
         try {
-            GlobalObject object;
-            if (pathToJSONFile.toLowerCase().contains("library")) {
-                object = new Library();
-            } else if (pathToJSONFile.toLowerCase().contains("user")) {
-                object = new UserStore();
-            } else {
-                throw new UserDataException();
-            }
+//            if (pathToJSONFile.toLowerCase().contains("library")) {
+//                object = new Library();
+//            } else if (pathToJSONFile.toLowerCase().contains("user")) {
+//                object = new UserStore();
+//            } else {
+//                throw new UserDataException();
+//            }
 
-            object.addObjectsToList(parseObjectsFromJson(pathToJSONFile));
-            object.addObjectsToList(objects);
+//            object.addObjectsToList(parseObjectsFromJson(pathToJSONFile));
+//            object.addObjectsToList(objects);
 
             Writer fileWriter = Files.newBufferedWriter(Paths.get(pathToJSONFile));
             //Writer fileWriter = new BufferedWriter(new FileWriter(pathToJSONFile, true));
@@ -65,8 +63,6 @@ public class JSONParser {
         } catch (IOException ex) {
             LOGGER.error("Error writing to file '" + pathToJSONFile + "'");
             LOGGER.error(ex.getMessage());
-        } catch (UserDataException e) {
-            e.printStackTrace();
         }
 
     }

@@ -22,7 +22,7 @@ public class Library extends GlobalObject {
         return this.bookList;
     }
 
-    public List<Author> getAuthorList() {
+    public List<Author> getAuthorsList() {
         if (authorList == null) {
             authorList = new ArrayList<>();
         }
@@ -37,6 +37,15 @@ public class Library extends GlobalObject {
         } else {
             List<Author> objectList = new ArrayList<>((Collection<? extends Author>) objects);
             authorList.addAll(objectList);
+        }
+    }
+
+    @Override
+    public void setList(List<?> objects) {
+        if (objects.get(0) instanceof Book) {
+            bookList = (List<Book>) objects;
+        } else {
+            authorList = (List<Author>) objects;
         }
     }
 

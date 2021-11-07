@@ -1,8 +1,11 @@
 package com.epam.laboratory.workObjects;
 
 import com.epam.laboratory.systemObjects.workWithData.BookFinder;
+import com.epam.laboratory.systemObjects.workWithUser.UserManager;
 import com.epam.laboratory.workObjects.library.Author;
 import com.epam.laboratory.workObjects.library.Book;
+import com.epam.laboratory.workObjects.library.Bookmark;
+import com.epam.laboratory.workObjects.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +61,7 @@ public class Recognizer {
         String issueYearString = SCANNER.nextLine();
         int issueYear = Integer.parseInt(issueYearString);
 
-        return new BookFinder().findBooksByTitleAndPagesAndYear(title, pagesAmount, issueYear);
+        return new BookFinder().getBooksByTitleAndPagesAndYear(title, pagesAmount, issueYear);
     }
 
     public List<Author> recognizeAuthors(String authorsString) {
@@ -78,5 +81,15 @@ public class Recognizer {
             authorsString = authorsString.replace(authorSubstring, "").replaceFirst(",", "");
         }
         return authorList;
+    }
+
+    public Bookmark recognizeBookmark(User user){
+        System.out.println("Enter book title:");
+        String bookTitle = SCANNER.nextLine();
+
+        System.out.println("Enter bookmarks name:");
+        String bookmarksNames = SCANNER.nextLine();
+
+        return new UserManager().getBookmarkByName(user, bookTitle, bookmarksNames);
     }
 }

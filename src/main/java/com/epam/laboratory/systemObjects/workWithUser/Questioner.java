@@ -1,9 +1,12 @@
 package com.epam.laboratory.systemObjects.workWithUser;
 
 import com.epam.laboratory.workObjects.Recognizer;
+import com.epam.laboratory.workObjects.library.Author;
 import com.epam.laboratory.workObjects.user.User;
 import com.epam.laboratory.workObjects.user.UserRights;
+import com.epam.laboratory.workObjects.user.UserStatus;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Questioner {
@@ -17,9 +20,12 @@ public class Questioner {
 
         loginProcess();
 
-        System.out.println("What's the plan?");
-        String answer;
-        do {
+        String answer = "";
+        if(activeUser.getUserStatus().equals(UserStatus.LOCKED)){
+            System.out.println("Account \"" + activeUser.getUsername() + "\" was LOCKED");
+            answer = "logout";
+        }
+        while (!answer.equals("logout")){
             demonstrateProgramFunctionality();
             answer = SCANNER.nextLine();
             switch (answer) {
@@ -37,7 +43,9 @@ public class Questioner {
                     break;
                 case "5":
                     if (activeUser.getUserRights().equals(UserRights.ADMIN)) {
-                        askUserTasks();
+                        askAdminProgramFunctional();
+                    } else {
+                        System.out.println("You have no power here, " + activeUser.getUsername());
                     }
                     break;
                 case "logout":
@@ -45,7 +53,7 @@ public class Questioner {
                 default:
                     System.out.println("Not found " + answer + " functionality");
             }
-        } while (!answer.equals("logout"));
+        }
 
     }
 
@@ -53,15 +61,15 @@ public class Questioner {
         System.out.println("1.Showing functions\n" +
                 "2.Adding functions\n" +
                 "3.Remove functions\n" +
-                "4.Search functions\n");
+                "4.Search functions");
         if (activeUser.getUserRights().equals(UserRights.ADMIN)) {
             System.out.println("5.Work with users functions");
         }
-        System.out.println("logout");
+        System.out.println("\nlogout");
     }
 
     private void loginProcess() throws Throwable {
-        System.out.println("Login process");
+        System.out.println("LOGIN PROCESS");
 
         System.out.println("Enter username: ");
         String userName = SCANNER.nextLine();
@@ -135,10 +143,13 @@ public class Questioner {
                 FACADE.removeBooksFromLibrary(RECOGNIZER.recognizeSimplifiedBookData());
                 break;
             case "2":
-                //FACADE.removeBooksFromLibraryByAuthors();
+                System.out.println("Enter authors list comma separated: ");
+                List<Author> authors = RECOGNIZER.recognizeAuthors(SCANNER.nextLine());
+                FACADE.removeBooksFromLibraryByAuthors(authors);
+                FACADE.removeAuthorsFromLibrary(authors);
                 break;
             case "3":
-                //FACADE.removeBookmarks();
+                FACADE.removeBookmark(activeUser, RECOGNIZER.recognizeBookmark(activeUser));
                 break;
             default:
                 System.out.println("Not found " + answer + " functionality");
@@ -192,7 +203,7 @@ public class Questioner {
     }
 
     // WORK IN PROGRESS
-    private void showAdminProgramFunctional() {
+    private void askAdminProgramFunctional() {
         System.out.println("1.Add new user\n" +
                 "2.Show user's logs\n" +
                 "3.Block user\n" +
@@ -221,6 +232,4 @@ public class Questioner {
                 System.out.println("Not found " + answer + " functionality");
         }
     }
-
-
 }

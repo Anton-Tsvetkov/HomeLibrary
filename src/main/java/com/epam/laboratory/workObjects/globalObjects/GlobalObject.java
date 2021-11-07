@@ -9,4 +9,6 @@ public abstract class GlobalObject {
     public abstract List<?> getList();
 
     public abstract void addObjectsToList(List<?> objects);
+
+    public abstract void setList(List<?> objects);
 }

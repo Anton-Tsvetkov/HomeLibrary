@@ -1,16 +1,22 @@
 package com.epam.laboratory.systemObjects.workWithData;
 
+import com.epam.laboratory.systemObjects.workWithData.parsers.DataLoader;
 import com.epam.laboratory.systemObjects.workWithUser.Facade;
 import com.epam.laboratory.workObjects.library.Author;
 import com.epam.laboratory.workObjects.library.Book;
+import com.epam.laboratory.workObjects.library.Bookmark;
+import com.epam.laboratory.workObjects.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookFinder {
 
+    private final DataLoader DATA_LOADER = new DataLoader();
 
-    public List<Book> findBooksByTitleAndPagesAndYear(String title, int pagesAmount, int issueYear) {
+
+
+    public List<Book> getBooksByTitleAndPagesAndYear(String title, int pagesAmount, int issueYear) {
         List<Book> foundBooks = new ArrayList<>();
 
         List<Book> bookList = new Facade().getBooks();
@@ -79,6 +85,20 @@ public class BookFinder {
             }
         }
         return foundBooks;
+    }
+
+    public List<Book> getBooksWithUsersBookmarks(User user){
+        List<Book> bookList = (List<Book>) DATA_LOADER.getDataFromFile(ConfigurationDataUsage.pathToLibraryJsonFile).getList();
+        List<Book> bookListWithUsersBookmarks = new ArrayList<>();
+        List<Bookmark> usersBookmark = user.getBookmarkList();
+        for (Book book : bookList) {
+            for (Bookmark bookmark : usersBookmark) {
+                if (book.getTitle().equals(bookmark.getBookTitle())){
+                    bookListWithUsersBookmarks.add(book);
+                }
+            }
+        }
+        return bookListWithUsersBookmarks;
     }
 
 }

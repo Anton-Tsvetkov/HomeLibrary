@@ -1,10 +1,9 @@
 package com.epam.laboratory.systemObjects.workWithData;
 
-import com.epam.laboratory.systemObjects.workWithData.ConfigurationDataUsage;
-import com.epam.laboratory.systemObjects.workWithData.loadData.DataLoader;
+import com.epam.laboratory.systemObjects.workWithData.parsers.DataLoader;
+import com.epam.laboratory.workObjects.globalObjects.UserStore;
 import com.epam.laboratory.workObjects.user.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDataInspector {
@@ -13,9 +12,9 @@ public class UserDataInspector {
     private List<User> userList = (List<User>) DATA_LOADER.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
 
     public boolean isUserExists(String username) {
-        List<?> userList = DATA_LOADER.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
-        for (Object user : userList) {
-            if (((User) user).getUsername().equals(username)) {
+        UserStore userStore = (UserStore) DATA_LOADER.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        for (User user : userStore.getList()) {
+            if (user.getUsername().equals(username)) {
                 return true;
             }
         }

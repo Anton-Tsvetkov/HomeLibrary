@@ -67,5 +67,16 @@
       "ISBN": "129-SAJ5-88-E3",
       "issueYear": 2017
     }
+  ],
+  "authorList": [
+    {
+      "name": "author11"
+    },
+    {
+      "name": "author30"
+    },
+    {
+      "name": "author86"
+    }
   ]
 }
