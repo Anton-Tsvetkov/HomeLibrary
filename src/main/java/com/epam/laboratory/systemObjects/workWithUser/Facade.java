@@ -4,12 +4,12 @@ import com.epam.laboratory.exceptions.UserDataException;
 import com.epam.laboratory.systemObjects.workWithData.BookFinder;
 import com.epam.laboratory.systemObjects.workWithData.ConfigurationDataUsage;
 import com.epam.laboratory.systemObjects.workWithData.Librarian;
+import com.epam.laboratory.systemObjects.workWithData.UserActionsLogger;
 import com.epam.laboratory.systemObjects.workWithData.parsers.DataLoader;
 import com.epam.laboratory.workObjects.library.Author;
 import com.epam.laboratory.workObjects.library.Book;
 import com.epam.laboratory.workObjects.library.Bookmark;
 import com.epam.laboratory.workObjects.user.User;
-import com.epam.laboratory.workObjects.user.UserStatus;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -23,9 +23,6 @@ public class Facade {
     private final BookFinder BOOK_FINDER = new BookFinder();
     private final Logger LOGGER = Logger.getLogger(Facade.class);
 
-    private void updateData() {
-
-    }
 
     public User loginUser(String username, String password) throws Throwable {
         if (USER_DATA_INSPECTOR.isUserDataCorrect(username, password)) {
@@ -36,26 +33,21 @@ public class Facade {
         }
     }
 
-    public String registerUser(String username, String password) {
+    public void registerUser(String username, String password) {
 
         if (USER_DATA_INSPECTOR.isUserExists(username)) {
-            return "Username \"" + username + "\" is already exists";
         } else {
             USER_MANAGER.registerNewUser(username, password);
-            return "Welcome " + username;
         }
 
     }
 
     public void blockUser(String username) {
-        User user = getUserByUsername(username);
-        user.setUserStatus(UserStatus.LOCKED);
-
+        USER_MANAGER.blockUser(username);
     }
 
     public void unlockUser(String username) {
-        User user = getUserByUsername(username);
-        user.setUserStatus(UserStatus.UNLOCKED);
+        USER_MANAGER.unlockUser(username);
     }
 
     public static User getUserByUsername(String username) {
@@ -74,6 +66,10 @@ public class Facade {
 
     public List<Book> getBooksWithUsersBookmarks(User user) {
         return BOOK_FINDER.getBooksWithUsersBookmarks(user);
+    }
+
+    public String getUsersLogs(String username){
+        return USER_MANAGER.getUsersLogs(username);
     }
 
 

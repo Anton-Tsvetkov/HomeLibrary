@@ -13,6 +13,7 @@ public class ConfigurationDataUsage {
     public static String pathToLibraryJsonFile;
     public static String pathToLibraryCsvFile;
     public static String pathToUserStoreJsonFile;
+    public static String pathToUsersLogs;
 
     private static final Logger LOGGER = Logger.getLogger(ConfigurationDataUsage.class);
 
@@ -24,7 +25,7 @@ public class ConfigurationDataUsage {
             pathToLibraryJsonFile = properties.getProperty("PATH_TO_LIBRARY_JSON_FILE");
             pathToLibraryCsvFile = properties.getProperty("PATH_TO_LIBRARY_CSV_FILE");
             pathToUserStoreJsonFile = properties.getProperty("PATH_TO_USER_STORE_JSON_FILE");
-
+            pathToUsersLogs = properties.getProperty("PATH_TO_USERS_LOGS_FILE");
 
         } catch (FileNotFoundException ex) {
             LOGGER.error("Properties config file not found. " + ex.getMessage());
@@ -34,5 +35,7 @@ public class ConfigurationDataUsage {
             LOGGER.error(ex.getMessage());
         }
     }
+
+
 
 }

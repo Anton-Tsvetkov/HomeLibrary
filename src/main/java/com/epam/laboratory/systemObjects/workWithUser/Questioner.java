@@ -1,5 +1,6 @@
 package com.epam.laboratory.systemObjects.workWithUser;
 
+import com.epam.laboratory.systemObjects.workWithData.UserActionsLogger;
 import com.epam.laboratory.workObjects.Recognizer;
 import com.epam.laboratory.workObjects.library.Author;
 import com.epam.laboratory.workObjects.user.User;
@@ -15,17 +16,19 @@ public class Questioner {
     private final Scanner SCANNER = new Scanner(System.in);
     private User activeUser;
     private final Recognizer RECOGNIZER = new Recognizer();
+    private final UserActionsLogger USER_ACTIONS_LOGGER = new UserActionsLogger();
+
 
     public void askUserTasks() throws Throwable {
 
         loginProcess();
 
         String answer = "";
-        if(activeUser.getUserStatus().equals(UserStatus.LOCKED)){
+        if (activeUser.getUserStatus().equals(UserStatus.LOCKED)) {
             System.out.println("Account \"" + activeUser.getUsername() + "\" was LOCKED");
             answer = "logout";
         }
-        while (!answer.equals("logout")){
+        while (!answer.equals("logout")) {
             demonstrateProgramFunctionality();
             answer = SCANNER.nextLine();
             switch (answer) {
@@ -49,6 +52,7 @@ public class Questioner {
                     }
                     break;
                 case "logout":
+                    USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Log out");
                     break;
                 default:
                     System.out.println("Not found " + answer + " functionality");
@@ -77,6 +81,7 @@ public class Questioner {
         String password = SCANNER.nextLine();
 
         activeUser = FACADE.loginUser(userName, password);
+        USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Log in");
 
         System.out.println("Welcome back " + activeUser.getUsername());
     }
@@ -88,9 +93,11 @@ public class Questioner {
         switch (answer) {
             case "1":
                 System.out.println(FACADE.getBooks());
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Viewing books");
                 break;
             case "2":
                 System.out.println(FACADE.getBooksWithUsersBookmarks(activeUser));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Viewing books with users bookmarks");
                 break;
             default:
                 System.out.println("Not found " + answer + " functionality");
@@ -107,17 +114,21 @@ public class Questioner {
         switch (answer) {
             case "1":
                 FACADE.addNewBooksInLibrary(RECOGNIZER.recognizeBookData());
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Add new books in library");
                 break;
             case "2":
                 System.out.println("Enter authors list comma separated:");
                 FACADE.addNewAuthors(RECOGNIZER.recognizeAuthors(SCANNER.nextLine()));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Add new authors");
                 break;
             case "3":
                 System.out.println("Enter path to file:");
                 FACADE.addNewBooksInLibraryFromFile(SCANNER.nextLine());
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Add new books in library from CSV or JSON file");
                 break;
             case "4":
                 FACADE.addNewBookmarks(activeUser, RECOGNIZER.recognizeNewBookmark());
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Add new bookmarks");
                 break;
             default:
                 System.out.println("Not found " + answer + " functionality");
@@ -132,15 +143,18 @@ public class Questioner {
         switch (answer) {
             case "1":
                 FACADE.removeBooksFromLibrary(RECOGNIZER.recognizeSimplifiedBookData());
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Remove books from library");
                 break;
             case "2":
                 System.out.println("Enter authors list comma separated: ");
                 List<Author> authors = RECOGNIZER.recognizeAuthors(SCANNER.nextLine());
                 FACADE.removeBooksFromLibraryByAuthors(authors);
                 FACADE.removeAuthorsFromLibrary(authors);
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Remove authors (with books by these authors)");
                 break;
             case "3":
                 FACADE.removeBookmark(activeUser, RECOGNIZER.recognizeExistBookmark(activeUser));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Remove bookmark");
                 break;
             default:
                 System.out.println("Not found \"" + answer + "\" functionality");
@@ -158,14 +172,17 @@ public class Questioner {
             case "1":
                 System.out.println("Enter book title or part of it");
                 System.out.println(FACADE.getBooksByTitle(SCANNER.nextLine()));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Search books by title (or part of it)");
                 break;
             case "2":
                 System.out.println("Enter author name or part of it");
                 System.out.println(FACADE.getBooksByAuthor(SCANNER.nextLine()));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Search books by author");
                 break;
             case "3":
                 System.out.println("Enter ISBN index");
                 System.out.println(FACADE.getBooksByISBN(SCANNER.nextLine()));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Search books by ISBN");
                 break;
             case "4":
                 System.out.println("Enter lower bound of issue years diapason...");
@@ -173,6 +190,7 @@ public class Questioner {
                 System.out.println("... and upper bound");
                 String issueYearToString = SCANNER.nextLine();
                 System.out.println(FACADE.getBooksByIssueYear(Integer.parseInt(issueYearFromString), Integer.parseInt(issueYearToString)));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Search books by issue year diapason");
                 break;
             case "5":
                 System.out.println("Enter book title: ");
@@ -187,13 +205,13 @@ public class Questioner {
                 int issueYear = Integer.parseInt(issueYearString);
 
                 System.out.println(FACADE.getBooksByParametersGroup(bookTitle, pagesAmount, issueYear));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Search books by year, pages amount and part of book title");
                 break;
             default:
                 System.out.println("Not found " + answer + " functionality");
         }
     }
 
-    // WORK IN PROGRESS
     private void askAdminProgramFunctional() {
         System.out.println("1.Add new user\n" +
                 "2.Show user's logs\n" +
@@ -208,16 +226,22 @@ public class Questioner {
                 System.out.println("Enter new user password:");
                 String password = SCANNER.nextLine();
                 FACADE.registerUser(username, password);
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Add new user");
                 break;
             case "2":
+                System.out.println("Enter username: ");
+                System.out.println(FACADE.getUsersLogs(SCANNER.nextLine()));
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Show user's logs");
                 break;
             case "3":
                 System.out.println("Enter username you want to block:");
                 FACADE.blockUser(SCANNER.nextLine());
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Block user");
                 break;
             case "4":
                 System.out.println("Enter username you want to unblock:");
                 FACADE.unlockUser(SCANNER.nextLine());
+                USER_ACTIONS_LOGGER.logAction(activeUser.getUsername(), "Unblock user");
                 break;
             default:
                 System.out.println("Not found " + answer + " functionality");

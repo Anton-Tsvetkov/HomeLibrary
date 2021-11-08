@@ -7,6 +7,7 @@ import com.epam.laboratory.workObjects.globalObjects.UserStore;
 import com.epam.laboratory.workObjects.library.Bookmark;
 import com.epam.laboratory.workObjects.user.User;
 
+import java.io.*;
 import java.util.List;
 
 public class DataLoader {
@@ -59,6 +60,31 @@ public class DataLoader {
         bookmarkList.remove(removingBookmark);
         user.setBookmarkList(bookmarkList);
         updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
+    }
+
+    public void addDataToFile(String pathToFile, String data) {
+        try (FileWriter fileWriter = new FileWriter(pathToFile, true)) {
+            fileWriter.write("\n" + data);
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public String getDataFromFileAsString(String pathToFile) {
+        try (FileReader fileReader = new FileReader(pathToFile)) {
+            StringBuilder stringData = new StringBuilder();
+            int c;
+            while ((c = fileReader.read()) != -1) {
+                stringData.append(c);
+            }
+            return stringData.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "NO DATA";
     }
 
     public void updateFile(String pathToFile, GlobalObject object) {
