@@ -65,7 +65,7 @@ public class Facade {
     }
 
     public List<Book> getBooksWithUsersBookmarks(User user) {
-        return bookFinder.getBooksWithUsersBookmarks(user);
+        return bookFinder.getBooksWithUsersBookmarks(getBooks(), user);
     }
 
     public String getUsersLogs(String username){
@@ -114,23 +114,23 @@ public class Facade {
     // SEARCHING FUNCTIONALITY
 
     public List<Book> getBooksByTitle(String title) {
-        return bookFinder.getBooksByTitle(title);
+        return bookFinder.getBooksByTitle(getBooks(), title);
     }
 
     public List<Book> getBooksByAuthor(String author) {
-        return bookFinder.getBooksByAuthor(author);
+        return bookFinder.getBooksByAuthor(getBooks(), author);
     }
 
     public List<Book> getBooksByISBN(String isbn) {
-        return bookFinder.getBooksByISBN(isbn);
+        return bookFinder.getBooksByISBN(getBooks(), isbn);
     }
 
     public List<Book> getBooksByIssueYear(int issueYearFrom, int issueYearTo) {
-        return bookFinder.getBooksByIssueYear(issueYearFrom, issueYearTo);
+        return bookFinder.getBooksByIssueYear(getBooks(), issueYearFrom, issueYearTo);
     }
 
     public List<Book> getBooksByParametersGroup(String bookTitle, int pagesAmount, int issueYear) {
-        return new BookFinder().getBooksByTitleAndPagesAndYear(bookTitle, pagesAmount, issueYear);
+        return new BookFinder().getBooksByTitleAndPagesAndYear(getBooks(), bookTitle, pagesAmount, issueYear);
 
     }
 

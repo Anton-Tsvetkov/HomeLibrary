@@ -15,7 +15,6 @@ public class JSONParser {
 
     private static final Logger logger = Logger.getLogger(JSONParser.class);
 
-
     public GlobalObject parseObjectsFromJson(String pathToJSONFile) {
         GlobalObject object;
         if (pathToJSONFile.toLowerCase().contains("library")) {

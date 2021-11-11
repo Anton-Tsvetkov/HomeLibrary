@@ -4,6 +4,7 @@ import com.epam.laboratory.entities.library.Author;
 import com.epam.laboratory.entities.library.Book;
 import com.epam.laboratory.entities.library.Bookmark;
 import com.epam.laboratory.entities.user.User;
+import com.epam.laboratory.userCommunication.Facade;
 import com.epam.laboratory.util.BookFinder;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class Recognizer {
         String issueYearString = scanner.nextLine();
         int issueYear = Integer.parseInt(issueYearString);
 
-        return new BookFinder().getBooksByTitleAndPagesAndYear(title, pagesAmount, issueYear);
+        return BookFinder.getBooksByTitleAndPagesAndYear(new Facade().getBooks(), title, pagesAmount, issueYear);
     }
 
     public List<Author> recognizeAuthors(String authorsString) {
