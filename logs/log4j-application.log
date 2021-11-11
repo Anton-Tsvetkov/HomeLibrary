@@ -1,0 +1,14 @@
+2021-10-21 15:13:05 ERROR JSONParser:44 - Cannot deserialize value of type `com.epam.laboratory.workObjects.user.User` from Array value (token `JsonToken.START_ARRAY`)
+ at [Source: (String)"[{"password":"paccvolt","userRights":{},"bookmarkList":[],"username":"uzer","bookList":[]}]"; line: 1, column: 1]
+2021-10-21 15:13:33 ERROR JSONParser:44 - Cannot deserialize value of type `com.epam.laboratory.workObjects.user.User` from Array value (token `JsonToken.START_ARRAY`)
+ at [Source: (String)"[{"password":"paccvolt","userRights":{},"bookmarkList":[],"username":"uzer","bookList":[]}]"; line: 1, column: 1]
+2021-10-21 15:14:47 ERROR JSONParser:44 - Cannot deserialize value of type `com.epam.laboratory.workObjects.user.UserRights` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (String)"{"password":"paccvolt","userRights":{},"bookmarkList":[],"username":"uzer","bookList":[]}"; line: 1, column: 37] (through reference chain: com.epam.laboratory.workObjects.user.User["userRights"])
+2021-11-01 09:03:11 ERROR JSONParser:76 - Cannot construct instance of `com.epam.laboratory.workObjects.library.Author` (although at least one Creator exists): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (String)"{"pagesAmount":111,"issueYear":1985,"ISBN":"2-266-11156-6","author":[{"name":"author1"}],"isbn":"2-266-11156-6","bookTitle":"title1"}"; line: 1, column: 71] (through reference chain: com.epam.laboratory.workObjects.library.Book["author"]->java.util.ArrayList[0])
+2021-11-01 09:03:20 ERROR JSONParser:76 - Cannot construct instance of `com.epam.laboratory.workObjects.library.Author` (although at least one Creator exists): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (String)"{"pagesAmount":111,"issueYear":1985,"ISBN":"2-266-11156-6","author":[{"name":"author1"}],"isbn":"2-266-11156-6","bookTitle":"title1"}"; line: 1, column: 71] (through reference chain: com.epam.laboratory.workObjects.library.Book["author"]->java.util.ArrayList[0])
+2021-11-01 17:50:13 ERROR JSONParser:74 - Unrecognized field "bookmark" (class com.epam.laboratory.workObjects.globalObjects.UserStore), not marked as ignorable (one known property: "list"])
+ at [Source: (String)"{"bookmark":[{"pageNumber":105,"name":"bookmark1","bookTitle":"title3"}],"password":"password1","userRights":"USER","book":[{"pagesAmount":111,"issueYear":1985,"ISBN":"2-266-11156-6","author":["author1"],"bookTitle":"title1"},{"pagesAmount":222,"issueYear":2003,"ISBN":"1-426-32850-7","author":["author2","author3"],"bookTitle":"title2"}],"username":"username1"}"; line: 1, column: 14] (through reference chain: com.epam.laboratory.workObjects.globalObjects.UserStore["bookmark"])
+2021-11-06 14:44:27 ERROR UserDataInspector:56 - Incorrect data for: "logout" user
+2021-11-06 14:44:27 ERROR UserDataInspector:57 - -1

@@ -1,0 +1,54 @@
+
+username1	2021/11/08 12:27:16
+Log in
+
+username1	2021/11/08 12:27:19
+Viewing books
+
+username1	2021/11/08 12:27:21
+Log out
+
+username3	2021/11/08 12:27:43
+Log in
+
+username3	2021/11/08 12:28:02
+Search books by title (or part of it)
+
+username3	2021/11/08 12:28:06
+Log out
+
+username3	2021/11/08 12:29:54
+Log in
+
+username3	2021/11/08 12:30:01
+Show user's logs
+
+username3	2021/11/08 12:30:07
+Log out
+
+username3	2021/11/08 12:38:33
+Log in
+
+username3	2021/11/08 12:38:39
+Show user's logs
+
+username3	2021/11/08 12:38:47
+Log out
+
+username3	2021/11/08 12:39:25
+Log in
+
+username3	2021/11/08 12:39:31
+Show user's logs
+
+username3	2021/11/08 12:39:44
+Log out
+
+username3	2021/11/08 12:40:28
+Log in
+
+username3	2021/11/08 12:40:35
+Show user's logs
+
+username3	2021/11/08 12:40:45
+Log out
