@@ -11,7 +11,6 @@ import com.epam.laboratory.entities.library.Author;
 import com.epam.laboratory.entities.library.Book;
 import com.epam.laboratory.entities.library.Bookmark;
 import com.epam.laboratory.entities.user.User;
-import org.apache.log4j.Logger;
 
 import java.util.List;
 
@@ -21,7 +20,6 @@ public class Facade {
     private final UserManager userManager = new UserManager();
     private final DataLoader dataLoader = new DataLoader();
     private final Librarian librarian = new Librarian();
-    private final BookFinder bookFinder = new BookFinder();
 
 
     public User loginUser(String username, String password) throws Throwable {
@@ -34,12 +32,9 @@ public class Facade {
     }
 
     public void registerUser(String username, String password) {
-
-        if (userDataInspector.isUserExists(username)) {
-        } else {
+        if (!userDataInspector.isUserExists(username)) {
             userManager.registerNewUser(username, password);
         }
-
     }
 
     public void blockUser(String username) {
@@ -65,7 +60,7 @@ public class Facade {
     }
 
     public List<Book> getBooksWithUsersBookmarks(User user) {
-        return bookFinder.getBooksWithUsersBookmarks(getBooks(), user);
+        return BookFinder.getBooksWithUsersBookmarks(getBooks(), user);
     }
 
     public String getUsersLogs(String username){
@@ -114,23 +109,23 @@ public class Facade {
     // SEARCHING FUNCTIONALITY
 
     public List<Book> getBooksByTitle(String title) {
-        return bookFinder.getBooksByTitle(getBooks(), title);
+        return BookFinder.getBooksByTitle(getBooks(), title);
     }
 
     public List<Book> getBooksByAuthor(String author) {
-        return bookFinder.getBooksByAuthor(getBooks(), author);
+        return BookFinder.getBooksByAuthor(getBooks(), author);
     }
 
     public List<Book> getBooksByISBN(String isbn) {
-        return bookFinder.getBooksByISBN(getBooks(), isbn);
+        return BookFinder.getBooksByISBN(getBooks(), isbn);
     }
 
     public List<Book> getBooksByIssueYear(int issueYearFrom, int issueYearTo) {
-        return bookFinder.getBooksByIssueYear(getBooks(), issueYearFrom, issueYearTo);
+        return BookFinder.getBooksByIssueYear(getBooks(), issueYearFrom, issueYearTo);
     }
 
     public List<Book> getBooksByParametersGroup(String bookTitle, int pagesAmount, int issueYear) {
-        return new BookFinder().getBooksByTitleAndPagesAndYear(getBooks(), bookTitle, pagesAmount, issueYear);
+        return BookFinder.getBooksByTitleAndPagesAndYear(getBooks(), bookTitle, pagesAmount, issueYear);
 
     }
 
