@@ -11,13 +11,17 @@ import java.util.List;
 
 public class UserDataInspector {
 
-    private static final DataLoader dataLoader = new DataLoader();
-    private final UserStore userStore = (UserStore) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
-    private static final Logger logger = Logger.getLogger(UserDataInspector.class);
+    private final DataLoader dataLoader = new DataLoader();
+    private final ConfigurationDataUsage configurationDataUsage = new ConfigurationDataUsage();
+    private final UserStore userStore;
+    private final Logger logger = Logger.getLogger(UserDataInspector.class);
 
+    public UserDataInspector() {
+        userStore = (UserStore) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
+    }
 
     public boolean isUserExists(String username) {
-        UserStore userStore = (UserStore) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        UserStore userStore = (UserStore) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
         for (User user : userStore.getList()) {
             String usernameRealUser = user.getUsername();
             if (usernameRealUser.equals(username) && isUserUnlocked(usernameRealUser)) {
@@ -30,8 +34,8 @@ public class UserDataInspector {
         return false;
     }
 
-    private static boolean isUserUnlocked(String username) {
-        UserStore userStore = (UserStore) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+    private boolean isUserUnlocked(String username) {
+        UserStore userStore = (UserStore) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
         for (User user : userStore.getList()) {
             if (user.getUserStatus() == UserStatus.UNLOCKED) {
                 return true;

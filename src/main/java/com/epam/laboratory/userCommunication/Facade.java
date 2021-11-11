@@ -22,7 +22,6 @@ public class Facade {
     private final DataLoader dataLoader = new DataLoader();
     private final Librarian librarian = new Librarian();
     private final BookFinder bookFinder = new BookFinder();
-    private final Logger logger = Logger.getLogger(Facade.class);
 
 
     public User loginUser(String username, String password) throws Throwable {
@@ -62,7 +61,7 @@ public class Facade {
     }
 
     public List<Book> getBooks() {
-        return (List<Book>) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToLibraryJsonFile).getList();
+        return (List<Book>) dataLoader.getDataFromFile(new ConfigurationDataUsage().getPathToLibraryJsonFile()).getList();
     }
 
     public List<Book> getBooksWithUsersBookmarks(User user) {

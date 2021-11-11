@@ -15,13 +15,14 @@ public class Librarian {
 
     private final DataLoader dataLoader = new DataLoader();
     private final Library library;
+    private final ConfigurationDataUsage configurationDataUsage = new ConfigurationDataUsage();
 
     public Librarian() {
-        library = (Library) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToLibraryJsonFile);
+        library = (Library) dataLoader.getDataFromFile(configurationDataUsage.getPathToLibraryJsonFile());
     }
 
     private void updateLibraryFile() {
-        dataLoader.updateFile(ConfigurationDataUsage.pathToLibraryJsonFile, this.library);
+        dataLoader.updateFile(configurationDataUsage.getPathToLibraryJsonFile(), this.library);
     }
 
 

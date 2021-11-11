@@ -19,7 +19,6 @@ public class BookFinder {
 
     public List<Book> getBooksByTitleAndPagesAndYear(String title, int pagesAmount, int issueYear) {
         List<Book> foundBooks = new ArrayList<>();
-
         List<Book> bookList = new Facade().getBooks();
 
         for (Book book : bookList) {
@@ -89,7 +88,7 @@ public class BookFinder {
     }
 
     public List<Book> getBooksWithUsersBookmarks(User user){
-        List<Book> bookList = (List<Book>) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToLibraryJsonFile).getList();
+        List<Book> bookList = (List<Book>) dataLoader.getDataFromFile(new ConfigurationDataUsage().getPathToLibraryJsonFile()).getList();
         List<Book> bookListWithUsersBookmarks = new ArrayList<>();
         List<Bookmark> usersBookmark = user.getBookmarkList();
         for (Book book : bookList) {

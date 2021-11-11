@@ -13,6 +13,7 @@ import java.util.List;
 public class DataLoader {
 
     private final JSONParser jsonParser = new JSONParser();
+    private final ConfigurationDataUsage configurationDataUsage = new ConfigurationDataUsage();
 
 
     public GlobalObject getDataFromFile(String pathToFile) {
@@ -28,7 +29,7 @@ public class DataLoader {
     }
 
     public void addNewBookmarks(User user, Bookmark bookmark) {
-        UserStore userStore = (UserStore) getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        UserStore userStore = (UserStore) getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
         for (User user1 : userStore.getList()) {
             if (user.getUsername().equals(user1.getUsername())) {
                 List<Bookmark> bookmarkList = user1.getBookmarkList();
@@ -37,11 +38,11 @@ public class DataLoader {
                 break;
             }
         }
-        updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
+        updateFile(configurationDataUsage.getPathToUserStoreJsonFile(), userStore);
     }
 
     public void removeBookmark(User user, Bookmark bookmarkForRemove) {
-        UserStore userStore = (UserStore) getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        UserStore userStore = (UserStore) getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
 
         for (User realUser : userStore.getList()) {
             if (user.getUsername().equals(realUser.getUsername())) {
@@ -59,7 +60,7 @@ public class DataLoader {
         }
         bookmarkList.remove(removingBookmark);
         user.setBookmarkList(bookmarkList);
-        updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
+        updateFile(configurationDataUsage.getPathToUserStoreJsonFile(), userStore);
     }
 
     public void addDataToFile(String pathToFile, String data) {

@@ -18,11 +18,12 @@ public class UserManager {
 
     private final DataLoader dataLoader = new DataLoader();
     private final UserActionsLogger userActionsLogger = new UserActionsLogger();
+    private final ConfigurationDataUsage configurationDataUsage = new ConfigurationDataUsage();
 
     public void registerNewUser(String username, String password) {
-        UserStore userStore = (UserStore) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        UserStore userStore = (UserStore) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
         userStore.addObjectsToList(new ArrayList<User>((Collection<? extends User>) new User(username, password)));
-        dataLoader.updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
+        dataLoader.updateFile(configurationDataUsage.getPathToUserStoreJsonFile(), userStore);
     }
 
     private UserRights getUserStatusByUserName(String username) throws Throwable {
@@ -34,7 +35,7 @@ public class UserManager {
     }
 
     public User getUserByUsername(String username) throws Throwable {
-        List<User> userList = (List<User>) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile).getList();
+        List<User> userList = (List<User>) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile()).getList();
         for (User user : userList) {
             if (user.getUsername().equals(username)) {
                 return user;
@@ -56,24 +57,24 @@ public class UserManager {
     }
 
     public void blockUser(String username) {
-        UserStore userStore = (UserStore) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        UserStore userStore = (UserStore) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
         for (User user : userStore.getList()) {
             if (user.getUsername().equals(username)) {
                 user.setUserStatus(UserStatus.LOCKED);
                 break;
             }
         }
-        dataLoader.updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
+        dataLoader.updateFile(configurationDataUsage.getPathToUserStoreJsonFile(), userStore);
     }
 
     public void unlockUser(String username) {
-        UserStore userStore = (UserStore) dataLoader.getDataFromFile(ConfigurationDataUsage.pathToUserStoreJsonFile);
+        UserStore userStore = (UserStore) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
         for (User user : userStore.getList()) {
             if (user.getUsername().equals(username)) {
                 user.setUserStatus(UserStatus.UNLOCKED);
                 break;
             }
         }
-        dataLoader.updateFile(ConfigurationDataUsage.pathToUserStoreJsonFile, userStore);
+        dataLoader.updateFile(configurationDataUsage.getPathToUserStoreJsonFile(), userStore);
     }
 }
