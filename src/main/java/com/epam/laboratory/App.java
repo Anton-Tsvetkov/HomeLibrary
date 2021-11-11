@@ -1,6 +1,6 @@
 package com.epam.laboratory;
 
-import com.epam.laboratory.systemObjects.workWithUser.Questioner;
+import com.epam.laboratory.userCommunication.Questioner;
 
 public class App {
     public static void main(String[] args) throws Throwable {

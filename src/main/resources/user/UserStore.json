@@ -1,0 +1,66 @@
+{
+  "userList": [
+    {
+      "username": "username1",
+      "password": "password1",
+      "userRights": "USER",
+      "userStatus": "UNLOCKED",
+      "bookmarkList": [
+        {
+          "name": "bookmark1",
+          "ISBN": "5-913-65257-3",
+          "pageNumber": 105
+        }
+      ]
+    },
+    {
+      "username": "username2",
+      "password": "password2",
+      "userRights": "USER",
+      "userStatus": "LOCKED",
+      "bookmarkList": [
+        {
+          "name": "bookmark1",
+          "ISBN": "5-913-65257-3",
+          "pageNumber": 29
+        }
+      ]
+    },
+    {
+      "username": "username3",
+      "password": "password3",
+      "userRights": "ADMIN",
+      "userStatus": "UNLOCKED",
+      "bookmarkList": [
+        {
+          "name": "bookmark1",
+          "ISBN": "1-426-32850-7",
+          "pageNumber": 32
+        },
+        {
+          "name": "bookmark2",
+          "ISBN": "1-426-32850-7",
+          "pageNumber": 43
+        }
+      ]
+    },
+    {
+      "username": "username4",
+      "password": "password4",
+      "userRights": "USER",
+      "userStatus": "UNLOCKED",
+      "bookmarkList": [
+        {
+          "name": "bookmark1",
+          "ISBN": "5-913-65257-3",
+          "pageNumber": 5
+        },
+        {
+          "name": "bookmark2",
+          "ISBN": "812-882-12-353",
+          "pageNumber": 92
+        }
+      ]
+    }
+  ]
+}
