@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@JsonRootName(value = "Library")
+@JsonRootName(value = "catalog")
 public class Library extends GlobalObject {
 
-    protected List<Book> bookList = new ArrayList<>();
-    protected List<Author> authorList = new ArrayList<>();
+    private List<Book> bookList = new ArrayList<>();
+    private List<Author> authorList = new ArrayList<>();
 
     @Override
     public List<Book> getList() {
@@ -30,12 +30,12 @@ public class Library extends GlobalObject {
     }
 
     @Override
-    public void addObjectsToList(List<?> objects) {
-        if (objects.get(0) instanceof Book) {
-            List<Book> objectList = new ArrayList<>((Collection<? extends Book>) objects);
+    public void addObjectToList(Object object) {
+        if (object instanceof Book) {
+            List<Book> objectList = new ArrayList<>((Collection<? extends Book>) object);
             bookList.addAll(objectList);
         } else {
-            List<Author> objectList = new ArrayList<>((Collection<? extends Author>) objects);
+            List<Author> objectList = new ArrayList<>((Collection<? extends Author>) object);
             authorList.addAll(objectList);
         }
     }
@@ -53,6 +53,7 @@ public class Library extends GlobalObject {
     public String toString() {
         return "Library{" +
                 "bookList=" + bookList +
+                ", authorList=" + authorList +
                 '}';
     }
 }

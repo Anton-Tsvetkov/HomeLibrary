@@ -7,7 +7,6 @@ import com.epam.laboratory.entities.user.User;
 import com.epam.laboratory.entities.user.UserRights;
 import com.epam.laboratory.entities.user.UserStatus;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Questioner {
@@ -117,8 +116,8 @@ public class Questioner {
                 userActionsLogger.logAction(activeUser.getUsername(), "Add new books in library");
                 break;
             case "2":
-                System.out.println("Enter authors list comma separated:");
-                facade.addNewAuthors(recognizer.recognizeAuthors(scanner.nextLine()));
+                System.out.println("Enter author:");
+                facade.addNewAuthor(recognizer.recognizeAuthor());
                 userActionsLogger.logAction(activeUser.getUsername(), "Add new authors");
                 break;
             case "3":
@@ -147,9 +146,9 @@ public class Questioner {
                 break;
             case "2":
                 System.out.println("Enter authors list comma separated: ");
-                List<Author> authors = recognizer.recognizeAuthors(scanner.nextLine());
-                facade.removeBooksFromLibraryByAuthors(authors);
-                facade.removeAuthorsFromLibrary(authors);
+                Author author = recognizer.recognizeAuthor();
+                facade.removeBooksFromLibraryByAuthor(author);
+                facade.removeAuthorFromLibrary(author);
                 userActionsLogger.logAction(activeUser.getUsername(), "Remove authors (with books by these authors)");
                 break;
             case "3":

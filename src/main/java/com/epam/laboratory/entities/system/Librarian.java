@@ -29,17 +29,17 @@ public class Librarian {
     // ADDING FUNCTIONALITY
 
     public void addNewBooksInLibrary(List<Book> bookList) {
-        library.addObjectsToList(bookList);
+        library.addObjectToList(bookList);
         updateLibraryFile();
     }
 
     public void addNewBooksInLibraryFromFile(String pathToFile) {
-        library.addObjectsToList(dataLoader.getDataFromFile(pathToFile).getList());
+        library.addObjectToList(dataLoader.getDataFromFile(pathToFile).getList());
         updateLibraryFile();
     }
 
-    public void addNewAuthors(List<Author> authorsList) {
-        library.addObjectsToList(authorsList);
+    public void addNewAuthor(Author author) {
+        library.addObjectToList(author);
         updateLibraryFile();
     }
 
@@ -50,9 +50,9 @@ public class Librarian {
         List<Book> removingList = new ArrayList<>();
         for (Book removingBook : bookListForRemove) {
             for (Book book : library.getList()) {
-                if (book.getTitle().equals(removingBook.getTitle())
-                        && book.getPagesAmount() == removingBook.getPagesAmount()
-                        && book.getIssueYear() == removingBook.getIssueYear()) {
+                if (book.getBookName().equals(removingBook.getBookName())
+                        && book.getPageCount() == removingBook.getPageCount()
+                        && book.getReleaseYear() == removingBook.getReleaseYear()) {
                     removingList.add(book);
                 }
             }
@@ -63,13 +63,11 @@ public class Librarian {
         updateLibraryFile();
     }
 
-    public void removeAuthorsFromLibrary(List<Author> authorsForRemove) {
+    public void removeAuthorFromLibrary(Author authorForRemove) {
         List<Author> removingAuthorList = new ArrayList<>();
-        for (Author removingAuthor : authorsForRemove) {
-            for (Author author : library.getAuthorsList()) {
-                if (author.getName().equals(removingAuthor.getName())) {
-                    removingAuthorList.add(author);
-                }
+        for (Author author : library.getAuthorsList()) {
+            if (author.getName().equals(authorForRemove.getName())) {
+                removingAuthorList.add(author);
             }
         }
         List<Author> authors = library.getAuthorsList();
@@ -78,15 +76,11 @@ public class Librarian {
         updateLibraryFile();
     }
 
-    public void removeBooksFromLibraryByAuthors(List<Author> authorsForRemove) {
+    public void removeBooksFromLibraryByAuthor(Author authorForRemove) {
         List<Book> removingBookList = new ArrayList<>();
-        for (Author removingAuthor : authorsForRemove) {
-            for (Book book : library.getList()) {
-                for (Author bookAuthor : book.getAuthorList()) {
-                    if (bookAuthor.getName().equals(removingAuthor.getName())) {
-                        removingBookList.add(book);
-                    }
-                }
+        for (Book book : library.getList()) {
+            if (book.getAuthor().getName().equals(authorForRemove.getName())) {
+                removingBookList.add(book);
             }
         }
         List<Book> books = library.getList();

@@ -8,54 +8,58 @@ import java.util.List;
 @JsonRootName(value = "book")
 public class Book {
 
-    @JsonProperty("bookTitle")
-    private String title;
+    @JsonProperty("bookName")
+    private String bookName;
 
-    @JsonProperty("author")
-    private List<Author> authorList;
+    @JsonProperty("releaseYear")
+    private int releaseYear;
 
-    @JsonProperty("pagesAmount")
-    private int pagesAmount;
+    @JsonProperty("pageCount")
+    private int pageCount;
 
     @JsonProperty("ISBN")
     private String ISBN;
 
-    @JsonProperty("issueYear")
-    private int issueYear;
+    @JsonProperty("publisher")
+    private String publisher;
+
+    @JsonProperty("author")
+    private Author author;
 
     public Book() {
     }
 
-    public Book(String title, List<Author> author, int pagesAmount, String ISBN, int issueYear) {
-        this.title = title;
-        this.authorList = author;
-        this.pagesAmount = pagesAmount;
+    public Book(String bookName, int releaseYear, int pageCount, String ISBN, String publisher, Author author) {
+        this.bookName = bookName;
+        this.releaseYear = releaseYear;
+        this.pageCount = pageCount;
         this.ISBN = ISBN;
-        this.issueYear = issueYear;
+        this.publisher = publisher;
+        this.author = author;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
-    public List<Author> getAuthorList() {
-        return authorList;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setAuthorList(List<Author> authorList) {
-        this.authorList = authorList;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
-    public int getPagesAmount() {
-        return pagesAmount;
+    public int getPageCount() {
+        return pageCount;
     }
 
-    public void setPagesAmount(int pagesAmount) {
-        this.pagesAmount = pagesAmount;
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
     }
 
     public String getISBN() {
@@ -66,22 +70,31 @@ public class Book {
         this.ISBN = ISBN;
     }
 
-    public int getIssueYear() {
-        return issueYear;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setIssueYear(int issueYear) {
-        this.issueYear = issueYear;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override
     public String toString() {
         return "Book{" +
-                "title='" + title + '\'' +
-                ", author=" + authorList +
-                ", pagesAmount=" + pagesAmount +
+                "bookName='" + bookName + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", pageCount=" + pageCount +
                 ", ISBN='" + ISBN + '\'' +
-                ", issueYear=" + issueYear +
+                ", publisher='" + publisher + '\'' +
+                ", author=" + author +
                 '}';
     }
 }

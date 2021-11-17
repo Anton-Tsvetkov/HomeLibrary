@@ -52,3 +52,24 @@ Show user's logs
 
 username3	2021/11/08 12:40:45
 Log out
+
+username4	2021/11/11 21:40:11
+Log in
+
+username4	2021/11/11 21:40:21
+Search books by title (or part of it)
+
+username4	2021/11/11 21:40:44
+Search books by title (or part of it)
+
+username4	2021/11/11 21:40:48
+Log out
+
+username3	2021/11/17 23:09:49
+Log in
+
+username3	2021/11/17 23:09:55
+Viewing books
+
+username3	2021/11/17 23:09:59
+Log out

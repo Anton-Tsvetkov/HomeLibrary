@@ -22,7 +22,7 @@ public class UserManager {
 
     public void registerNewUser(String username, String password) {
         UserStore userStore = (UserStore) dataLoader.getDataFromFile(configurationDataUsage.getPathToUserStoreJsonFile());
-        userStore.addObjectsToList(new ArrayList<User>((Collection<? extends User>) new User(username, password)));
+        userStore.addObjectToList(new ArrayList<User>((Collection<? extends User>) new User(username, password)));
         dataLoader.updateFile(configurationDataUsage.getPathToUserStoreJsonFile(), userStore);
     }
 

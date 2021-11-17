@@ -28,8 +28,8 @@ public class Recognizer {
             System.out.println("Enter title:");
             String title = scanner.nextLine();
 
-            System.out.println("Enter authors list comma separated:");
-            String authors = scanner.nextLine();
+            System.out.println("Enter author:");
+            String author = scanner.nextLine();
 
             System.out.println("Enter pages amount:");
             String pagesAmountString = scanner.nextLine();
@@ -42,10 +42,30 @@ public class Recognizer {
             String issueYearString = scanner.nextLine();
             int issueYear = Integer.parseInt(issueYearString);
 
-            bookList.add(new Book(title.trim(), recognizeAuthors(authors), pagesAmount, isbn.trim(), issueYear));
+            System.out.println("Enter publisher:");
+            String publisher = scanner.nextLine();
+
+            bookList.add(new Book(title.trim(), issueYear, pagesAmount, isbn.trim(), publisher.trim(), recognizeAuthor()));
         }
 
         return bookList;
+    }
+
+    public Author recognizeAuthor(){
+        System.out.println("Enter name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter second name:");
+        String secondName = scanner.nextLine();
+
+        System.out.println("Enter last name:");
+        String lastName = scanner.nextLine();
+
+        System.out.println("Enter date of birthday:");
+        String dob = scanner.nextLine();
+
+        return new Author(name, secondName, lastName, dob);
+
     }
 
     public List<Book> recognizeSimplifiedBookData() {
@@ -62,24 +82,6 @@ public class Recognizer {
         int issueYear = Integer.parseInt(issueYearString);
 
         return BookFinder.getBooksByTitleAndPagesAndYear(new Facade().getBooks(), title, pagesAmount, issueYear);
-    }
-
-    public List<Author> recognizeAuthors(String authorsString) {
-        authorsString = authorsString.replaceAll(" ", "");
-        authorsString += ',';
-        List<Author> authorList = new ArrayList<>();
-        int commaCount = 0;
-        for (int i = 0; i < authorsString.length(); i++) {
-            if (authorsString.charAt(i) == ',') {
-                commaCount++;
-            }
-        }
-        for (int i = 0; i < commaCount; i++) {
-            String authorSubstring = authorsString.substring(0, authorsString.indexOf(','));
-            authorList.add(new Author(authorSubstring));
-            authorsString = authorsString.replace(authorSubstring, "").replaceFirst(",", "");
-        }
-        return authorList;
     }
 
     public Bookmark recognizeExistBookmark(User user){

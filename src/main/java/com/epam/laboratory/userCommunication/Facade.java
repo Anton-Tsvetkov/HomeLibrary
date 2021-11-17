@@ -78,8 +78,8 @@ public class Facade {
         librarian.addNewBooksInLibraryFromFile(pathToFile);
     }
 
-    public void addNewAuthors(List<Author> authorsList) {
-        librarian.addNewAuthors(authorsList);
+    public void addNewAuthor(Author author) {
+        librarian.addNewAuthor(author);
     }
 
     public void addNewBookmarks(User user, Bookmark bookmark) {
@@ -93,12 +93,12 @@ public class Facade {
         librarian.removeBooksFromLibrary(bookList);
     }
 
-    public void removeAuthorsFromLibrary(List<Author> authorsList) {
-        librarian.removeAuthorsFromLibrary(authorsList);
+    public void removeAuthorFromLibrary(Author author) {
+        librarian.removeAuthorFromLibrary(author);
     }
 
-    public void removeBooksFromLibraryByAuthors(List<Author> authorsList) {
-        librarian.removeBooksFromLibraryByAuthors(authorsList);
+    public void removeBooksFromLibraryByAuthor(Author author) {
+        librarian.removeBooksFromLibraryByAuthor(author);
     }
 
     public void removeBookmark(User user, Bookmark bookmark) {

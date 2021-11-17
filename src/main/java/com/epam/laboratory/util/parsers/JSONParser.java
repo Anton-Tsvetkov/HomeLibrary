@@ -3,13 +3,17 @@ package com.epam.laboratory.util.parsers;
 import com.epam.laboratory.entities.global.GlobalObject;
 import com.epam.laboratory.entities.global.Library;
 import com.epam.laboratory.entities.global.UserStore;
+import com.epam.laboratory.entities.library.Book;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.apache.log4j.Logger;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class JSONParser {
 
@@ -17,7 +21,7 @@ public class JSONParser {
 
     public GlobalObject parseObjectsFromJson(String pathToJSONFile) {
         GlobalObject object;
-        if (pathToJSONFile.toLowerCase().contains("library")) {
+        if (pathToJSONFile.toLowerCase().contains("catalog")) {
             object = new Library();
         } else if (pathToJSONFile.toLowerCase().contains("userstore")) {
             object = new UserStore();
@@ -29,6 +33,7 @@ public class JSONParser {
             Gson gson = new Gson();
             Reader reader = Files.newBufferedReader(Paths.get(pathToJSONFile));
             object = gson.fromJson(reader, object.getClass());
+            System.out.println(object.getList());
         } catch (IOException ex) {
             logger.error(ex.getMessage());
         }
