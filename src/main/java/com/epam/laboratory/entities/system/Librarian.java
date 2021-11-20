@@ -23,6 +23,7 @@ public class Librarian {
 
     private void updateLibraryFile() {
         dataLoader.updateFile(configurationDataUsage.getPathToLibraryJsonFile(), this.library);
+        dataLoader.updateFile(configurationDataUsage.getPathToLibraryCsvFile(), this.library);
     }
 
 

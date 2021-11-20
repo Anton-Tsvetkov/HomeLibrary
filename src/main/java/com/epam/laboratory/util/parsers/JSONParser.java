@@ -19,7 +19,7 @@ public class JSONParser {
 
     private static final Logger logger = Logger.getLogger(JSONParser.class);
 
-    public GlobalObject parseObjectsFromJson(String pathToJSONFile) {
+    public GlobalObject parseDataFromJson(String pathToJSONFile) {
         GlobalObject object;
         if (pathToJSONFile.toLowerCase().contains("catalog")) {
             object = new Library();
@@ -41,7 +41,7 @@ public class JSONParser {
 
     }
 
-    public void parseObjectsToJson(String pathToJSONFile, GlobalObject object) {
+    public void parseDataToJson(String pathToJSONFile, GlobalObject object) {
         try {
             Writer fileWriter = Files.newBufferedWriter(Paths.get(pathToJSONFile));
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

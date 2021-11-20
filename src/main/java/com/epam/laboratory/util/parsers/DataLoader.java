@@ -13,15 +13,15 @@ import java.util.List;
 public class DataLoader {
 
     private final JSONParser jsonParser = new JSONParser();
+    private final CSVParser csvParser = new CSVParser();
     private final ConfigurationDataUsage configurationDataUsage = new ConfigurationDataUsage();
 
 
     public GlobalObject getDataFromFile(String pathToFile) {
         if (pathToFile.toLowerCase().contains("json")) {
-            return jsonParser.parseObjectsFromJson(pathToFile);
+            return jsonParser.parseDataFromJson(pathToFile);
         } else if (pathToFile.toLowerCase().contains("csv")) {
-            // return data from csv file
-            return new Library();
+            return csvParser.parseDataFromFile(pathToFile);
         } else {
             System.out.println("Data not found");
             return new Library();
@@ -88,9 +88,9 @@ public class DataLoader {
 
     public void updateFile(String pathToFile, GlobalObject object) {
         if (pathToFile.toLowerCase().contains("json")) {
-            jsonParser.parseObjectsToJson(pathToFile, object);
+            jsonParser.parseDataToJson(pathToFile, object);
         } else if (pathToFile.toLowerCase().contains("csv")) {
-            // return data from csv file
+            //csvParser.parseDataToCSV(pathToFile, (Library) object);
         } else {
             System.out.println("Data not found");
         }
