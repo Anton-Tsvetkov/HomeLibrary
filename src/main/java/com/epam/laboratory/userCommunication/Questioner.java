@@ -203,7 +203,7 @@ public class Questioner {
                 String issueYearString = scanner.nextLine();
                 int issueYear = Integer.parseInt(issueYearString);
 
-                System.out.println(facade.getBooksByParametersGroup(bookTitle, pagesAmount, issueYear));
+                System.out.println(facade.getBookByParametersGroup(bookTitle, pagesAmount, issueYear));
                 userActionsLogger.logAction(activeUser.getUsername(), "Search books by year, pages amount and part of book title");
                 break;
             default:

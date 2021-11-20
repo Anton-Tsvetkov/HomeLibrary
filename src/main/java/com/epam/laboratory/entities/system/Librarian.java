@@ -46,19 +46,17 @@ public class Librarian {
 
     // REMOVING FUNCTIONALITY
 
-    public void removeBooksFromLibrary(List<Book> bookListForRemove) {
-        List<Book> removingList = new ArrayList<>();
-        for (Book removingBook : bookListForRemove) {
+    public void removeBookFromLibrary(Book bookForRemove) {
+        Book removingBook = new Book();
             for (Book book : library.getList()) {
-                if (book.getBookName().equals(removingBook.getBookName())
-                        && book.getPageCount() == removingBook.getPageCount()
-                        && book.getReleaseYear() == removingBook.getReleaseYear()) {
-                    removingList.add(book);
+                if (book.getBookName().equals(bookForRemove.getBookName())
+                        && book.getPageCount() == bookForRemove.getPageCount()
+                        && book.getReleaseYear() == bookForRemove.getReleaseYear()) {
+                    removingBook = book;
                 }
-            }
         }
         List<Book> newList = library.getList();
-        newList.removeAll(removingList);
+        newList.remove(removingBook);
         library.setList(newList);
         updateLibraryFile();
     }

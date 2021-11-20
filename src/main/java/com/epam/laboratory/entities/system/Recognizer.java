@@ -7,8 +7,6 @@ import com.epam.laboratory.entities.user.User;
 import com.epam.laboratory.userCommunication.Facade;
 import com.epam.laboratory.util.BookFinder;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Recognizer {
@@ -55,7 +53,7 @@ public class Recognizer {
 
     }
 
-    public List<Book> recognizeSimplifiedBookData() {
+    public Book recognizeSimplifiedBookData() {
 
         System.out.println("Enter title:");
         String title = scanner.nextLine();
@@ -68,7 +66,7 @@ public class Recognizer {
         String issueYearString = scanner.nextLine();
         int issueYear = Integer.parseInt(issueYearString);
 
-        return BookFinder.getBooksByTitleAndPagesAndYear(new Facade().getBooks(), title, pagesAmount, issueYear);
+        return BookFinder.getBookByTitleAndPagesAndYear(new Facade().getBooks(), title, pagesAmount, issueYear);
     }
 
     public Bookmark recognizeExistBookmark(User user) {

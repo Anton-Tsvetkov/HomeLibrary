@@ -11,13 +11,12 @@ import java.util.stream.Collectors;
 
 public class BookFinder {
 
-    public static List<Book> getBooksByTitleAndPagesAndYear(List<Book> bookList, String title, int pagesAmount, int issueYear) {
-        return bookList
+    public static Book getBookByTitleAndPagesAndYear(List<Book> bookList, String title, int pagesAmount, int issueYear) {
+        return (Book) bookList
                 .stream()
                 .filter(book -> book.getBookName().contains(title)
                         && book.getPageCount() == pagesAmount
-                        && book.getReleaseYear() == issueYear)
-                .collect(Collectors.toList());
+                        && book.getReleaseYear() == issueYear);
     }
 
     public static List<Book> getBooksByTitle(List<Book> bookList, String title) {

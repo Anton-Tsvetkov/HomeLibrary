@@ -1,11 +1,8 @@
 package com.epam.laboratory.entities.library;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 
-import java.util.List;
 
-@JsonRootName(value = "book")
 public class Book {
 
     @JsonProperty("bookName")

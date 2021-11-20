@@ -89,8 +89,8 @@ public class Facade {
 
     // REMOVING FUNCTIONALITY
 
-    public void removeBooksFromLibrary(List<Book> bookList) {
-        librarian.removeBooksFromLibrary(bookList);
+    public void removeBooksFromLibrary(Book book) {
+        librarian.removeBookFromLibrary(book);
     }
 
     public void removeAuthorFromLibrary(Author author) {
@@ -124,8 +124,8 @@ public class Facade {
         return BookFinder.getBooksByIssueYear(getBooks(), issueYearFrom, issueYearTo);
     }
 
-    public List<Book> getBooksByParametersGroup(String bookTitle, int pagesAmount, int issueYear) {
-        return BookFinder.getBooksByTitleAndPagesAndYear(getBooks(), bookTitle, pagesAmount, issueYear);
+    public Book getBookByParametersGroup(String bookTitle, int pagesAmount, int issueYear) {
+        return BookFinder.getBookByTitleAndPagesAndYear(getBooks(), bookTitle, pagesAmount, issueYear);
 
     }
 
