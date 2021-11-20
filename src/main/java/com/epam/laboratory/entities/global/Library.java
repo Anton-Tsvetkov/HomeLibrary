@@ -2,6 +2,7 @@ package com.epam.laboratory.entities.global;
 
 import com.epam.laboratory.entities.library.Author;
 import com.epam.laboratory.entities.library.Book;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.ArrayList;
@@ -11,15 +12,18 @@ import java.util.List;
 @JsonRootName(value = "catalog")
 public class Library extends GlobalObject {
 
-    private List<Book> bookList = new ArrayList<>();
-    private List<Author> authorList = new ArrayList<>();
+    @JsonProperty("catalog")
+    private List<Book> catalog;
+
+    @JsonProperty("authorList")
+    private List<Author> authorList;
 
     @Override
     public List<Book> getList() {
-        if (bookList == null) {
-            bookList = new ArrayList<>();
+        if (catalog == null) {
+            catalog = new ArrayList<>();
         }
-        return this.bookList;
+        return this.catalog;
     }
 
     public List<Author> getAuthorsList() {
@@ -32,18 +36,16 @@ public class Library extends GlobalObject {
     @Override
     public void addObjectToList(Object object) {
         if (object instanceof Book) {
-            List<Book> objectList = new ArrayList<>((Collection<? extends Book>) object);
-            bookList.addAll(objectList);
+            catalog.add((Book) object);
         } else {
-            List<Author> objectList = new ArrayList<>((Collection<? extends Author>) object);
-            authorList.addAll(objectList);
+            authorList.add((Author) object);
         }
     }
 
     @Override
     public void setList(List<?> objects) {
         if (objects.get(0) instanceof Book) {
-            bookList = (List<Book>) objects;
+            catalog = (List<Book>) objects;
         } else {
             authorList = (List<Author>) objects;
         }
@@ -52,7 +54,7 @@ public class Library extends GlobalObject {
     @Override
     public String toString() {
         return "Library{" +
-                "bookList=" + bookList +
+                "bookList=" + catalog +
                 ", authorList=" + authorList +
                 '}';
     }

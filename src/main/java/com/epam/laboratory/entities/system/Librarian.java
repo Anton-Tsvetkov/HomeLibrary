@@ -28,8 +28,8 @@ public class Librarian {
 
     // ADDING FUNCTIONALITY
 
-    public void addNewBooksInLibrary(List<Book> bookList) {
-        library.addObjectToList(bookList);
+    public void addNewBookInLibrary(Book book) {
+        library.addObjectToList(book);
         updateLibraryFile();
     }
 

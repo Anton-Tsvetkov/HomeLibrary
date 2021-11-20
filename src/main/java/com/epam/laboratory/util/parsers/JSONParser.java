@@ -33,7 +33,6 @@ public class JSONParser {
             Gson gson = new Gson();
             Reader reader = Files.newBufferedReader(Paths.get(pathToJSONFile));
             object = gson.fromJson(reader, object.getClass());
-            System.out.println(object.getList());
         } catch (IOException ex) {
             logger.error(ex.getMessage());
         }

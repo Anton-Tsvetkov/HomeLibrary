@@ -22,7 +22,7 @@ public class User {
     @JsonProperty("userStatus")
     protected UserStatus userStatus;
 
-    @JsonProperty("bookmark")
+    @JsonProperty("bookmarkList")
     protected List<Bookmark> bookmarkList;
 
 

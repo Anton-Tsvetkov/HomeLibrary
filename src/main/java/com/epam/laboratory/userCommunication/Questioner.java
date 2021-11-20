@@ -112,7 +112,7 @@ public class Questioner {
         String answer = scanner.nextLine();
         switch (answer) {
             case "1":
-                facade.addNewBooksInLibrary(recognizer.recognizeBookData());
+                facade.addNewBookInLibrary(recognizer.recognizeBookData());
                 userActionsLogger.logAction(activeUser.getUsername(), "Add new books in library");
                 break;
             case "2":

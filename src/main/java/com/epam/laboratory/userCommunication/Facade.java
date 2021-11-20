@@ -70,8 +70,8 @@ public class Facade {
 
     // ADDING FUNCTIONALITY
 
-    public void addNewBooksInLibrary(List<Book> bookList) {
-        librarian.addNewBooksInLibrary(bookList);
+    public void addNewBookInLibrary(Book book) {
+        librarian.addNewBookInLibrary(book);
     }
 
     public void addNewBooksInLibraryFromFile(String pathToFile) {

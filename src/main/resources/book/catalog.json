@@ -1,0 +1,76 @@
+{
+  "catalog": [
+    {
+      "bookName": "Стрелок",
+      "releaseYear": 1982,
+      "pageCount": 320,
+      "ISBN": "978-0452261341",
+      "publisher": "Donald M. Grant, Publisher, Inc.",
+      "author": {
+        "name": "Стивен",
+        "secondName": "",
+        "lastName": "Кинг",
+        "dob": "21.09.1947"
+      }
+    },
+    {
+      "bookName": "Извлечение троих",
+      "releaseYear": 1986,
+      "pageCount": 299,
+      "ISBN": "978-0452261342",
+      "publisher": "Donald M. Grant, Publisher, Inc.",
+      "author": {
+        "name": "Стивен",
+        "secondName": "",
+        "lastName": "Кинг",
+        "dob": "21.09.1947"
+      }
+    },
+    {
+      "bookName": "Лабиринт отражений",
+      "releaseYear": 1997,
+      "pageCount": 434,
+      "ISBN": "978-5976212268",
+      "publisher": "АСТ",
+      "author": {
+        "name": "Сергей",
+        "secondName": "Васильевич",
+        "lastName": "Лукьяненко",
+        "dob": "11.04.1986"
+      }
+    },
+    {
+      "bookName": "Божественная комедия",
+      "releaseYear": 1472,
+      "pageCount": 798,
+      "ISBN": "978-5-17-100180-3",
+      "publisher": "АСТ",
+      "author": {
+        "name": "Данте",
+        "secondName": "",
+        "lastName": "Алигьери",
+        "dob": "21.05.1265"
+      }
+    }
+  ],
+  "authorList": [
+    {
+      "name": "Эрих",
+      "secondName": "Зелигманн",
+      "lastName": "Фромм",
+      "dob": "23.03.1900"
+    },
+    {
+      "name": "Эрих",
+      "secondName": "Мария",
+      "lastName": "Ремарк",
+      "dob": "22.06.1898"
+    },
+    {
+      "name": "Жюль",
+      "secondName": "Габриэль",
+      "lastName": "Верн",
+      "dob": "08.02.1828"
+    }
+  ]
+}

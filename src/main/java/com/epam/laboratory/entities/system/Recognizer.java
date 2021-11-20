@@ -15,43 +15,30 @@ public class Recognizer {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public List<Book> recognizeBookData() {
+    public Book recognizeBookData() {
+        System.out.println("BOOK DATA");
+        System.out.println("Enter title:");
+        String title = scanner.nextLine();
 
-        System.out.println("Enter books amount:");
-        String booksAmountString = scanner.nextLine();
-        int booksAmount = Integer.parseInt(booksAmountString);
+        System.out.println("Enter pages amount:");
+        String pagesAmountString = scanner.nextLine();
+        int pagesAmount = Integer.parseInt(pagesAmountString);
 
-        List<Book> bookList = new ArrayList<>();
+        System.out.println("Enter ISBN:");
+        String isbn = scanner.nextLine();
 
-        for (int i = 0; i < booksAmount; i++) {
+        System.out.println("Enter issue year:");
+        String issueYearString = scanner.nextLine();
+        int issueYear = Integer.parseInt(issueYearString);
 
-            System.out.println("Enter title:");
-            String title = scanner.nextLine();
+        System.out.println("Enter publisher:");
+        String publisher = scanner.nextLine();
 
-            System.out.println("Enter author:");
-            String author = scanner.nextLine();
-
-            System.out.println("Enter pages amount:");
-            String pagesAmountString = scanner.nextLine();
-            int pagesAmount = Integer.parseInt(pagesAmountString);
-
-            System.out.println("Enter ISBN:");
-            String isbn = scanner.nextLine();
-
-            System.out.println("Enter issue year:");
-            String issueYearString = scanner.nextLine();
-            int issueYear = Integer.parseInt(issueYearString);
-
-            System.out.println("Enter publisher:");
-            String publisher = scanner.nextLine();
-
-            bookList.add(new Book(title.trim(), issueYear, pagesAmount, isbn.trim(), publisher.trim(), recognizeAuthor()));
-        }
-
-        return bookList;
+        return new Book(title.trim(), issueYear, pagesAmount, isbn.trim(), publisher.trim(), recognizeAuthor());
     }
 
-    public Author recognizeAuthor(){
+    public Author recognizeAuthor() {
+        System.out.println("AUTHOR DATA");
         System.out.println("Enter name:");
         String name = scanner.nextLine();
 
@@ -84,7 +71,7 @@ public class Recognizer {
         return BookFinder.getBooksByTitleAndPagesAndYear(new Facade().getBooks(), title, pagesAmount, issueYear);
     }
 
-    public Bookmark recognizeExistBookmark(User user){
+    public Bookmark recognizeExistBookmark(User user) {
         System.out.println("Enter book isbn:");
         String isbn = scanner.nextLine();
 
@@ -94,7 +81,7 @@ public class Recognizer {
         return new UserManager().getBookmarkByName(user, isbn, bookmarksNames);
     }
 
-    public Bookmark recognizeNewBookmark(){
+    public Bookmark recognizeNewBookmark() {
         System.out.println("Enter book isbn:");
         String isbn = scanner.nextLine();
 

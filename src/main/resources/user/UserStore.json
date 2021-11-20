@@ -8,7 +8,7 @@
       "bookmarkList": [
         {
           "name": "bookmark1",
-          "ISBN": "5-913-65257-3",
+          "ISBN": "978-0452261341",
           "pageNumber": 105
         }
       ]
@@ -21,7 +21,7 @@
       "bookmarkList": [
         {
           "name": "bookmark1",
-          "ISBN": "5-913-65257-3",
+          "ISBN": "978-5976212268",
           "pageNumber": 29
         }
       ]
@@ -34,12 +34,12 @@
       "bookmarkList": [
         {
           "name": "bookmark1",
-          "ISBN": "1-426-32850-7",
+          "ISBN": "978-0452261342",
           "pageNumber": 32
         },
         {
           "name": "bookmark2",
-          "ISBN": "1-426-32850-7",
+          "ISBN": "978-5976212268",
           "pageNumber": 43
         }
       ]
@@ -52,12 +52,12 @@
       "bookmarkList": [
         {
           "name": "bookmark1",
-          "ISBN": "5-913-65257-3",
+          "ISBN": "978-0452261342",
           "pageNumber": 5
         },
         {
           "name": "bookmark2",
-          "ISBN": "812-882-12-353",
+          "ISBN": "978-0452261341",
           "pageNumber": 92
         }
       ]

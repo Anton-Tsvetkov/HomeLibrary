@@ -10,7 +10,7 @@ public class Bookmark {
     private String name;
 
     @JsonProperty("ISBN")
-    private String isbn;
+    private String ISBN;
 
     @JsonProperty("pageNumber")
     private int pageNumber;
@@ -20,7 +20,7 @@ public class Bookmark {
 
     public Bookmark(String name, String isbn, int pageNumber) {
         this.name = name;
-        this.isbn = isbn;
+        this.ISBN = isbn;
         this.pageNumber = pageNumber;
     }
 
@@ -33,11 +33,11 @@ public class Bookmark {
     }
 
     public String getISBN() {
-        return isbn;
+        return ISBN;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public int getPageNumber() {
@@ -52,7 +52,7 @@ public class Bookmark {
     public String toString() {
         return "Bookmark{" +
                 "name='" + name + '\'' +
-                ", ISBN='" + isbn + '\'' +
+                ", ISBN='" + ISBN + '\'' +
                 ", pageNumber=" + pageNumber +
                 '}';
     }
